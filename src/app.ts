@@ -18,8 +18,10 @@ const port = process.env.PORT || 3000;
 
 app.use(compression({level: 6}));
 
-// viewディレクトリのテンプレート読み込み
-// テンプレートエンジンはpug
+/**
+ * viewディレクトリのテンプレート読み込み
+ * テンプレートエンジンはpug
+ */
 app.set('views', path.join(__dirname, 'views'))
 app.set(`view engine`, `pug`)
 
@@ -28,6 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+/**
+ * ルーティング
+ */
 app.use('/', indexRouter)
 app.use('/line', lineRouter)
 
@@ -47,5 +52,5 @@ app.use(function (err, req, res, next) {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`サーバを立ち上げました http://localhost:${port}`)
 })
